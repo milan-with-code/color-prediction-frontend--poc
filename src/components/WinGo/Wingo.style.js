@@ -114,19 +114,9 @@ export default StyleSheet.create({
     marginHorizontal: 10,
   },
 
-  bettingButton: {
-    borderRadius: 10,
-    padding: 10,
-  },
   bettingOptionsContainer: {
     marginHorizontal: 10,
     marginTop: 10,
-  },
-
-  bettingText: {
-    fontSize: 14,
-    fontFamily: Fonts.PoppinsMedium,
-    lineHeight: 20,
   },
 
   button: {
@@ -204,24 +194,13 @@ export default StyleSheet.create({
     marginLeft: 8,
   },
 
-  activeBettingButton: {
-    backgroundColor: '#8C67F6',
-  },
-
   activeTableButton: {
     backgroundColor: '#8C67F6',
   },
+
   inactiveTableButton: {
     backgroundColor: '#272932',
   },
-
-  buttonMargin: {
-    marginLeft: 10,
-  },
-
-  greenButton: {backgroundColor: '#17B15E'},
-  violetButton: {backgroundColor: '#9B48DB'},
-  redButton: {backgroundColor: '#D23838'},
 
   battingRow: {
     flexDirection: 'row',
@@ -255,5 +234,8 @@ export default StyleSheet.create({
     borderRadius: 20,
     paddingHorizontal: 5,
     lineHeight: 60,
+  },
+  tableMarginBottom: {
+    marginBottom: 20,
   },
 });

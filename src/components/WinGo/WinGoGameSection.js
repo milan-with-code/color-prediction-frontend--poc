@@ -177,7 +177,7 @@ const WinGoGameSection = () => {
         ))}
       </View>
 
-      <View style={{marginBottom: 20}}>{getTableData()}</View>
+      <View style={styles.tableMarginBottom}>{getTableData()}</View>
 
       <BigSmallModal
         isVisible={openBigSmallModal}

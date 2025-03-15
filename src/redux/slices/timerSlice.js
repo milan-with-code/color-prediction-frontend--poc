@@ -5,9 +5,15 @@ import axios from 'axios';
 export const fetchGameTime = createAsyncThunk(
   'timer/fetchGameTime',
   async (_, {rejectWithValue}) => {
+    const token = process.env.TOKEN_KEY;
     try {
       const response = await axios.get(
-        'http://192.168.51.33:5000/api/current-game',
+        `${process.env.LOCALHOST_URL}/current-game`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
       );
       return response.data;
     } catch (error) {
