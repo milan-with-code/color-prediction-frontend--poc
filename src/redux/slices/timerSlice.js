@@ -22,8 +22,7 @@ export const fetchGameTime = createAsyncThunk(
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      const data = await response.json();
-      return data;
+      return await response.json();
     } catch (error) {
       return rejectWithValue(error.message || 'Server error');
     }
@@ -37,8 +36,13 @@ const timerSlice = createSlice({
     gameId: '0000000000000000',
     status: 'idle',
     isLoading: false,
+    showAdvancedModal: false, // ✅ Add this
   },
-  reducers: {},
+  reducers: {
+    setShowAdvancedModal: (state, action) => {
+      state.showAdvancedModal = action.payload;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchGameTime.pending, state => {
@@ -50,6 +54,10 @@ const timerSlice = createSlice({
         state.timeLeft = action.payload.timeLeft;
         state.gameId = action.payload.gameId;
         state.isLoading = false;
+
+        // ✅ Update showAdvancedModal in Redux
+        state.showAdvancedModal =
+          action.payload.timeLeft <= 5 && action.payload.timeLeft > 0;
       })
       .addCase(fetchGameTime.rejected, state => {
         state.status = 'failed';
@@ -57,5 +65,7 @@ const timerSlice = createSlice({
       });
   },
 });
+
+export const {setShowAdvancedModal} = timerSlice.actions;
 
 export default timerSlice.reducer;

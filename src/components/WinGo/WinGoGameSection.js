@@ -21,7 +21,9 @@ const WinGoGameSection = () => {
   const dispatch = useDispatch();
 
   // Get Redux state
-  const {timeLeft, gameId} = useSelector(state => state.timer);
+  const {timeLeft, gameId, showAdvancedModal} = useSelector(
+    state => state.timer,
+  );
 
   const [selectedItem, setSelectedItem] = useState(winGoSecData[0].time);
   const [buttonTitle, setButtonTitle] = useState(null);
@@ -30,27 +32,16 @@ const WinGoGameSection = () => {
   );
   const [openBigSmallModal, setOpenBigSmallModal] = useState(false);
   const [selectedBtnColor, setSelectedBtnColor] = useState(null);
-  const [showAdvancedModal, setShowAdvancedModal] = useState(null);
 
   // Fetch live time every second
   useEffect(() => {
-    const fetchTime = async () => {
-      await dispatch(fetchGameTime());
+    const fetchTime = () => {
+      dispatch(fetchGameTime());
     };
 
     const interval = setInterval(fetchTime, 1000);
     return () => clearInterval(interval);
   }, [dispatch]);
-
-  useEffect(() => {
-    const time = Number(timeLeft);
-
-    if (time === 5) {
-      setShowAdvancedModal(true);
-    } else if (time === 1) {
-      setShowAdvancedModal(false);
-    }
-  }, [timeLeft]);
 
   const onClose = useCallback(() => {
     setOpenBigSmallModal(false);
