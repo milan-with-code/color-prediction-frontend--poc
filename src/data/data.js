@@ -156,79 +156,25 @@ export const battingTableButton = [
 ];
 
 export const gameHistoryData = [
-  {
-    id: '1',
-    Period: '20250308100052198',
-    number: 28,
-    BigSmall: 'Big',
-    color: 'red / violet',
-  },
-  {
-    id: '2',
-    Period: '20250308100052199',
-    number: 15,
-    BigSmall: 'Small',
-    color: 'green / violet',
-  },
-  {
-    id: '3',
-    Period: '20250308100052200',
-    number: 37,
-    BigSmall: 'Big',
-    color: 'violet',
-  },
-  {
-    id: '4',
-    Period: '20250308100052200',
-    number: 37,
-    BigSmall: 'Big',
-    color: 'red',
-  },
-  {
-    id: '5',
-    Period: '20250308100052200',
-    number: 37,
-    BigSmall: 'Big',
-    color: 'green',
-  },
+  ...Array.from({length: 20}, (_, i) => ({
+    id: (i + 1).toString(),
+    Period: `20250308100052${198 + i}`,
+    number: Math.floor(Math.random() * 40),
+    BigSmall: Math.random() > 0.5 ? 'Big' : 'Small',
+    color: ['red', 'green', 'violet', 'red / violet', 'green / violet'][
+      Math.floor(Math.random() * 5)
+    ],
+  })),
 ];
 
 export const chartTableData = [
-  {
-    id: '1',
-    period: '20250308100052314',
-    number: '3',
-    winSymbol: 'S',
-    color: 'green',
-  },
-  {
-    id: '2',
-    period: '20250308100052314',
-    number: '1',
-    winSymbol: 'B',
-    color: 'red',
-  },
-  {
-    id: '3',
-    period: '20250308100052314',
-    number: '4',
-    winSymbol: 'B',
-    color: 'red',
-  },
-  {
-    id: '4',
-    period: '20250308100052314',
-    number: '6',
-    winSymbol: 'B',
-    color: 'red',
-  },
-  {
-    id: '5',
-    period: '20250308100052314',
-    number: '7',
-    winSymbol: 'S',
-    color: 'violet',
-  },
+  ...Array.from({length: 20}, (_, i) => ({
+    id: (i + 1).toString(),
+    period: `20250308100052${314 + i}`,
+    number: Math.floor(Math.random() * 10).toString(),
+    winSymbol: Math.random() > 0.5 ? 'B' : 'S',
+    color: ['red', 'green', 'violet'][Math.floor(Math.random() * 3)],
+  })),
 ];
 
 export const battingValue = [

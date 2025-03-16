@@ -19,12 +19,18 @@ const BettingOptions = ({options, containerStyle}) => {
           activeOpacity={0.7}
           style={[
             styles.bettingButton,
-            selectedOption === item.title && styles.activeBettingButton,
+            (selectedOption || options[0].title) === item.title &&
+              styles.activeBettingButton,
           ]}>
           <Text
             style={[
               styles.bettingText,
-              {color: selectedOption === item.title ? 'white' : '#67696F'},
+              {
+                color:
+                  (selectedOption || options[0].title) === item.title
+                    ? 'white'
+                    : '#67696F',
+              },
             ]}>
             {item.title}
           </Text>

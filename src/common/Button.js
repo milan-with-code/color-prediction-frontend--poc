@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   primaryButton: {
-    backgroundColor: '#5921CB',
+    backgroundColor: '#8C67F6',
   },
   secondaryButton: {
     backgroundColor: 'transparent',

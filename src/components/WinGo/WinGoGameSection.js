@@ -9,15 +9,13 @@ import {
 } from '../../data/data';
 import Button from '../../common/Button';
 import styles from './Wingo.style';
-import GameHistoryTable from './GameHistoryTable';
-import ChartTable from './ChartTable';
-import MyHistoryTable from './MyHistoryTable';
 import TimerClock from '../../assets/svg/timerClock.svg';
 import BigSmallModal from '../../modal/BigSmallModal';
 import BettingOptions from '../../container/BettingOptions';
 import {fetchGameTime} from '../../redux/slices/timerSlice';
 import {useDispatch, useSelector} from 'react-redux';
 import {reset} from '../../redux/slices/counterSlice';
+import TableContainer from './TableContainer';
 
 const WinGoGameSection = () => {
   const dispatch = useDispatch();
@@ -36,10 +34,11 @@ const WinGoGameSection = () => {
 
   // Fetch live time every second
   useEffect(() => {
-    const interval = setInterval(() => {
-      dispatch(fetchGameTime());
-    }, 1000);
+    const fetchTime = async () => {
+      await dispatch(fetchGameTime());
+    };
 
+    const interval = setInterval(fetchTime, 1000);
     return () => clearInterval(interval);
   }, [dispatch]);
 
@@ -52,17 +51,6 @@ const WinGoGameSection = () => {
       setShowAdvancedModal(false);
     }
   }, [timeLeft]);
-
-  const getTableData = useCallback(() => {
-    switch (activeTableBtn) {
-      case 'Chart':
-        return <ChartTable />;
-      case 'My history':
-        return <MyHistoryTable />;
-      default:
-        return <GameHistoryTable />;
-    }
-  }, [activeTableBtn]);
 
   const onClose = useCallback(() => {
     setOpenBigSmallModal(false);
@@ -177,7 +165,7 @@ const WinGoGameSection = () => {
         ))}
       </View>
 
-      <View style={styles.tableMarginBottom}>{getTableData()}</View>
+      <TableContainer activeTable={activeTableBtn} />
 
       <BigSmallModal
         isVisible={openBigSmallModal}

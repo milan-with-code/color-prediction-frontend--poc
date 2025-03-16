@@ -238,4 +238,30 @@ export default StyleSheet.create({
   tableMarginBottom: {
     marginBottom: 20,
   },
+
+  // Pagination Style
+
+  paginationContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: '#272932',
+    marginVertical: 20,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: 15,
+  },
+  paginationButton: {
+    backgroundColor: '#8C67F6',
+    borderRadius: 5,
+    padding: 5,
+  },
+  disabledButton: {
+    backgroundColor: '#67696F',
+  },
+  pageText: {
+    fontSize: 14,
+    color: 'white',
+    opacity: 0.6,
+    fontFamily: Fonts.PoppinsMedium,
+  },
 });
